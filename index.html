@@ -11,11 +11,6 @@
     <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
@@ -28,6 +23,7 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
+      <!--Row 1-->
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Weather Dashbard</h1>
@@ -39,40 +35,49 @@
     </div>
 
     <!-- Row 2 -->
+    <div class="container">
     <div class="row">
         <div class="col-md-3">
+            <h5><b>Search for a City:</b></h5>
           <div class="input">
-              <input type="text" class="inputText">
+              <input type="text" class="inputText" placeholder="Atlanta, Georgia">
               <input type="submit" id="searchBtn" value="Search">
           </div>
+          <p></p>
         </div>
         <div class="col-md-9">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum perferendis voluptates error ullam placeat repellendus. Repellendus error repellat veritatis recusandae voluptates earum rerum consectetur itaque, ipsam nihil. Alias, nemo.</p>
+          <p>Shouldn't be here!</p>
         </div>
+      </div>
       </div>
 <!--- Row 3 -->
+<section class="container">
+  <section class="row">
+    <div class="col-md-3">
+      <p> </p>
+    </div>
+    <div class="col-md-9">
       <div class="row">
-        <div class="col-md-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+        <div class="col-md-2">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam amet in tempora soluta quo nulla hic laborum incidunt repellendus? Ea placeat quia omnis minus hic? Veritatis odio beatae voluptatibus architecto.</p>
         </div>
         <div class="col-md-2">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam amet in tempora soluta quo nulla hic laborum incidunt repellendus? Ea placeat quia omnis minus hic? Veritatis odio beatae voluptatibus architecto.</p>
         </div>
         <div class="col-md-2">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia maxime ipsa architecto adipisci alias, iusto molestias nisi et temporibus quia, fugit veniam incidunt earum necessitatibus quidem amet magni dolor soluta?</p>
         </div>
         <div class="col-md-2">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia maxime ipsa architecto adipisci alias, iusto molestias nisi et temporibus quia, fugit veniam incidunt earum necessitatibus quidem amet magni dolor soluta?</p>
         </div>
         <div class="col-md-2">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit maxime, eaque cum repellendus placeat praesentium. Odit, optio dolores recusandae vitae repellat itaque atque facilis est tempora illo iure incidunt soluta?</p>
         </div>
       </div>
-
-      <div class="city"></div>
-  <div class="wind"></div>
-  <div class="humidity"></div>
-  <div class="temp"></div>
+    </div>
+  </section>
+</section>
+   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
   </body>
