@@ -1,0 +1,15 @@
+.jumbotron {
+    background-color: darkblue;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: white;
+    text-align: center;
+}
+.col-md-9{
+    background-color: red;
+}
+.col-md-3{
+    background-color: green;
+}
