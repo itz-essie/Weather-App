@@ -1,15 +1,9 @@
 .jumbotron {
-    background-color: darkblue;
+    background-color: rgb(17, 17, 63);
     padding-bottom: 0px;
     padding-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
     color: white;
     text-align: center;
-}
-.col-md-9{
-    background-color: red;
-}
-.col-md-3{
-    background-color: green;
 }
