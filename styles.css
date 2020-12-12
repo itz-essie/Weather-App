@@ -1,9 +1,13 @@
 .jumbotron {
-    background-color: rgb(17, 17, 63);
-    padding-bottom: 0px;
-    padding-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    color: white;
-    text-align: center;
+  background-color: rgb(17, 17, 63);
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: white;
+  text-align: center;
+}
+body{
+    padding-left: 40px;
+    padding-right: 40px;
 }
