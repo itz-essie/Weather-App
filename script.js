@@ -1,35 +1,36 @@
-// // var APIKey= "5b6d33dc8f643284870e57c82d7b049d"
-// // var cityName = "Atlanta";
-// //     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Bujumbura,Burundi&appid=" + APIKey
+let currentTime = luxon.DateTime.local();
+  $(".currentDay").text(luxon.DateTime.local().toLocaleString({ weekday: 'long', month: 'long', day: '2-digit' }));
+  
 
-// //     $.ajax({
-// //       url: queryURL,
-// //       method: "GET"
-// //     })
-// //     .then(function(response) {
-// //         console.log(response)})
+var APIKey = "5b6d33dc8f643284870e57c82d7b049d";
 
-// var APIKey = "5b6d33dc8f643284870e57c82d7b049d";
+let searchButton = $("#searchBtn");
 
-// // Here we are building the URL we need to query the database
-// var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-//   "q=Bujumbura,Burundi&appid=" + APIKey;
+$("#searchBtn").on("click", function (event) {
+  event.preventDefault();
 
-// // Here we run our AJAX call to the OpenWeatherMap API
-//  $.ajax({
-//     url: queryURL,
-//     method: "GET"
-//   })
-//     // We store all of the retrieved data inside of an object called "response"
-//     .then(function(response) {
+  var cityName = $("#searchInput").val();
+  console.log($("#searchInput").val());
 
-//       // Log the queryURL
-//       console.log(queryURL);
+  var queryURL =
+    "https://api.openweathermap.org/data/2.5/weather?" +
+    "q=" +
+    cityName +
+    "&appid=" +
+    APIKey;
 
-//       // Log the resulting object
-//       console.log(response);
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    // Display response in the console log
+    console.log(response);
+  });
 
-let searchBtn = $("#searchBtn")
-  $("#searchBtn").on('click',function(){
-      // alert("you clicked the search button")
-  })
+  // to append searched cities to a table 
+  var citiesRow= $("<tr>")
+  var searchedCities = $("<td>").text(response.Name);
+  citiesRow.append(searchedCities)
+
+
+});

@@ -27,10 +27,8 @@
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Weather Dashbard</h1>
-        <p class="lead">
-          This is a modified jumbotron that occupies the entire horizontal space
-          of its parent.
-        </p>
+        <div class="currentDay">
+        </div>
       </div>
     </div>
 
@@ -40,13 +38,31 @@
         <div class="col-md-3">
             <h5><b>Search for a City:</b></h5>
           <div class="input">
-              <input type="text" class="inputText" placeholder="Atlanta, Georgia">
+              <input type="text" id= "searchInput" class="inputText" placeholder="Atlanta, Georgia">
               <input type="submit" id="searchBtn" value="Search">
           </div>
-          <p></p>
+          <table id="searchedCities">
+            <tr>
+              <td></td>
+              <tr>
+              <td></td>
+              <tr>
+              <td></td>
+              <tr>
+              <td></td>
+              <tr>
+              <td></td>
+            </tr>
+          </table>
         </div>
         <div class="col-md-9">
-          <p>Shouldn't be here!</p>
+          <div class="jumbotron jumbotron-fluid" id="weathertron">
+            
+            <div class="container">
+              <h1 class="display-4"></h1>
+              <p class="lead"></p>
+            </div>
+          </div>
         </div>
       </div>
       </div>
@@ -58,27 +74,56 @@
     </div>
     <div class="col-md-9">
       <div class="row">
-        <div class="col-md-2">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam amet in tempora soluta quo nulla hic laborum incidunt repellendus? Ea placeat quia omnis minus hic? Veritatis odio beatae voluptatibus architecto.</p>
+        <div class="col-md-1">
         </div>
         <div class="col-md-2">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam amet in tempora soluta quo nulla hic laborum incidunt repellendus? Ea placeat quia omnis minus hic? Veritatis odio beatae voluptatibus architecto.</p>
+          <div class="card" style="width: 9">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
         </div>
         <div class="col-md-2">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia maxime ipsa architecto adipisci alias, iusto molestias nisi et temporibus quia, fugit veniam incidunt earum necessitatibus quidem amet magni dolor soluta?</p>
+         <div class="card" style="width: 9">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div></p>
         </div>
         <div class="col-md-2">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia maxime ipsa architecto adipisci alias, iusto molestias nisi et temporibus quia, fugit veniam incidunt earum necessitatibus quidem amet magni dolor soluta?</p>
+         <div class="card" style="width: 9">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
         </div>
         <div class="col-md-2">
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit maxime, eaque cum repellendus placeat praesentium. Odit, optio dolores recusandae vitae repellat itaque atque facilis est tempora illo iure incidunt soluta?</p>
+         <div class="card" style="width: 9">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+        </div>
+        <div class="col-md-2">
+          <div class="card" style="width: 9;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="col-md-1">
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </section>
    
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
