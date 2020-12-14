@@ -31,27 +31,42 @@ $("#searchBtn").on("click", function (event) {
     // Display response in the console log
     console.log(response);
     var citiesTable = document.getElementById("citiesTable");
-  $(citiesTable).append("<tr>");
-  $("<td>").text(response.Name);
+    $(citiesTable).append("<tr>");
+    $("<td>").text(response.Name);
 
-  var tempF = (response.main.temp - 273.15) * 1.8 + 32;
-    $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-  $(".wind").text("Wind Speed: " + response.wind.speed);
-  $(".humidity").text("Humidity: " + response.main.humidity);
+    var tempF = (response.main.temp - 273.15) * 1.8 + 32;
+    $(".city").html("<h2>" + response.name + "</h2>");
+    $(".temperature").text("Temperature: " + tempF.toFixed(2));
+    $(".windspeed").text("Wind Speed: " + response.wind.speed + "MPH");
+
+    var lat = response.coord.lat;
+    var lon = response.coord.lon;
+
+    var queryURL2 =
+      "https://api.openweathermap.org/data/2.5/uvi?" +
+      "lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&appid=" +
+      APIKey;
+
+    $.ajax({
+      url: queryURL2,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+    $(".uvIndex").text("UV Index: " + response.value);
+    });
   });
-
-  
-
-  // // append a row to the table, and then append a cell to the row.
-  // var citiesTable = document.getElementById("citiesTable");
-  // $(citiesTable).append("<tr>");
-  // $("<td>").text(response.Name);
-
-  // var tempF = (response.main.temp - 273.15) * 1.8 + 32;
-
-  // $("#weathertron").text("Temperature (F) " + tempF.toFixed(2));
-
-//   $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-//   $(".wind").text("Wind Speed: " + response.wind.speed);
-//   $(".humidity").text("Humidity: " + response.main.humidity);
 });
+
+// // append a row to the table, and then append a cell to the row.
+// var citiesTable = document.getElementById("citiesTable");
+// $(citiesTable).append("<tr>");
+// $("<td>").text(response.Name);
+
+//   $("").text("<br><hr>"+ location).val()
+// $("").prepend("<br> <hr>"+ location);
+
+// })
