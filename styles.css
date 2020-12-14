@@ -7,20 +7,48 @@
   color: white;
   text-align: center;
 }
-body{
-    padding-left: 20px;
-    padding-right: 20px;
+body {
+  padding-left: 20px;
+  padding-right: 20px;
 }
-h5{
-    color: rgb(17, 17, 63);
+h5 {
+  color: rgb(17, 17, 63);
 }
-#weathertron{
-    background-color:white ;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    color: rgb(17, 17, 63);
-    text-align: left;
-    border-style: solid;
-  }
+#weathertron {
+  background-color: white;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: rgb(17, 17, 63);
+  text-align: left;
+  border-style: solid;
+}
+
+.low {
+  background-color: rgb(70, 109, 12);
+  color: white;
+}
+
+.moderate {
+  background-color: yellow;
+  color: white;
+  display: inline;
+  border-radius: 4px;
+  padding: 0 4px 0 4px;
+}
+
+.high {
+  background-color: orange;
+  color: white;
+}
+
+.veryhigh {
+  background-color: red;
+  color: white;
+}
+
+.extreme {
+  background-color: rgb(160, 7, 160);
+  color: white;
+}

@@ -35,8 +35,15 @@ $("#searchBtn").on("click", function (event) {
     $("<td>").text(response.Name);
 
     var tempF = (response.main.temp - 273.15) * 1.8 + 32;
+
+    var weatherImg = response.weather[0].icon;
+    var iconurl = "https://openweathermap.org/img/w/" + weatherImg + ".png";
+    $("#wicon").attr("src", iconurl);
+
+
     $(".city").html("<h2>" + response.name + "</h2>");
-    $(".temperature").text("Temperature: " + tempF.toFixed(2));
+    $(".humidity").text("Humidity: " + response.main.humidity + "%");
+    $(".temperature").text("Temperature: " + tempF.toFixed(2) + "°F");
     $(".windspeed").text("Wind Speed: " + response.wind.speed + "MPH");
 
     var lat = response.coord.lat;
@@ -56,7 +63,21 @@ $("#searchBtn").on("click", function (event) {
       method: "GET",
     }).then(function (response) {
       console.log(response);
-    $(".uvIndex").text("UV Index: " + response.value);
+      $(".uvIndex").text("UV Index: " + response.value);
+
+      var uvIndex = response.value;
+
+      if (uvIndex <= 2) {
+        $(this).addClass("low");
+      } else if ((uvIndex = 3 || uvIndex <= 5)) {
+        $(this).addClass("moderate");
+      } else if ((uvIndex = 6 || uvIndex <= 7)) {
+        $(this).addClass("high");
+      } else if ((uvIndex = 8 || uvIndex <= 10)) {
+        $(this).addClass("veryhigh");
+      } else if (uvIndex > 11) {
+        $(this).addClass("extreme");
+      }
     });
   });
 });
