@@ -1,3 +1,5 @@
+var currentClass;
+
 let currentTime = luxon.DateTime.local();
 $(".currentDay").text(
   luxon.DateTime.local().toLocaleString({
@@ -38,9 +40,11 @@ $("#searchBtn").on("click", function (event) {
 
     var weatherImg = response.weather[0].icon;
     var iconurl = "https://openweathermap.org/img/w/" + weatherImg + ".png";
+
+    // $("#weathertron").css("border-color", "#rgb(17, 17, 63")
+    document.getElementById("weathertron").style.border =
+      "thick solid rgb(17, 17, 63)";
     $("#wicon").attr("src", iconurl);
-
-
     $(".city").html("<h2>" + response.name + "</h2>");
     $(".humidity").text("Humidity: " + response.main.humidity + "%");
     $(".temperature").text("Temperature: " + tempF.toFixed(2) + "°F");
@@ -64,20 +68,36 @@ $("#searchBtn").on("click", function (event) {
     }).then(function (response) {
       console.log(response);
       $(".uvIndex").text("UV Index: " + response.value);
+      var uvIndexEl = $(".uvIndex");
+      console.log(uvIndexEl);
+
+      $("#citiesList").append("<button>" + cityName + "</button>");
 
       var uvIndex = response.value;
-
-      if (uvIndex <= 2) {
-        $(this).addClass("low");
-      } else if ((uvIndex = 3 || uvIndex <= 5)) {
-        $(this).addClass("moderate");
-      } else if ((uvIndex = 6 || uvIndex <= 7)) {
-        $(this).addClass("high");
-      } else if ((uvIndex = 8 || uvIndex <= 10)) {
-        $(this).addClass("veryhigh");
-      } else if (uvIndex > 11) {
-        $(this).addClass("extreme");
-      }
+      console.log(uvIndex);
+  
+        uvIndexEl.removeClass(currentClass);
+        if (uvIndex <= 2) {
+          if (currentClass)uvIndexEl.removeClass(currentClass)
+          uvIndexEl.toggleClass("low");
+          currentClass = "low";
+        } else if ((uvIndex = 3 || uvIndex <= 5)) {
+          if (currentClass)uvIndexEl.removeClass(currentClass)
+          uvIndexEl.toggleClass("moderate");
+          currentClass = "moderate";
+        } else if ((uvIndex = 6 || uvIndex <= 7)) {
+          if (currentClass)uvIndexEl.removeClass(currentClass)
+          uvIndexEl.toggleClass("high");
+          currentClass = "high";
+        } else if ((uvIndex = 8 || uvIndex <= 10)) {
+          if (currentClass)uvIndexEl.removeClass(currentClass)
+          uvIndexEl.toggleClass("veryhigh");
+          currentClass = "veryhigh";
+        } else if (uvIndex > 11) {
+          if (currentClass)uvIndexEl.removeClass(currentClass)
+          uvIndexEl.toggleClass("extreme");
+          currentClass = "extreme";
+        }
     });
   });
 });
