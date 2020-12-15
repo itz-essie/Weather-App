@@ -24,16 +24,20 @@ h5 {
   margin-right: 0px;
   color: rgb(17, 17, 63);
   text-align: center;
+  /* opacity: 0.0;  Opacity so that when page loads, the jumbroton does not appeaer until user searches city */
 }
 
 .low {
   background-color: rgb(70, 109, 12);
   color: white;
+  display: inline;
+  border-radius: 4px;
+  padding: 0 4px 0 4px;
 }
 
 .moderate {
   background-color: yellow;
-  color: white;
+  color: rgb(17, 17, 63);
   display: inline;
   border-radius: 4px;
   padding: 0 4px 0 4px;
@@ -42,14 +46,52 @@ h5 {
 .high {
   background-color: orange;
   color: white;
+  display: inline;
+  border-radius: 4px;
+  padding: 0 4px 0 4px;
 }
 
 .veryhigh {
   background-color: red;
   color: white;
+  display: inline;
+  border-radius: 4px;
+  padding: 0 4px 0 4px;
 }
 
 .extreme {
   background-color: rgb(160, 7, 160);
   color: white;
+  display: inline;
+  border-radius: 4px;
+  padding: 0 4px 0 4px;
+}
+.btnGroup button {
+  background-color:rgb(17, 17, 63);
+  border: 1px solid white;
+  color: white; /* White text */
+  padding: 10px 24px; /*Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 69%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+}
+
+.btnGroup button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btnGroup button:hover {
+  background-color: rgb(17, 17, 63);
+}
+
+body {  
+  margin: 16px;  
+  font-size: 100%;  
+  font-family: 'Open Sans', sans-serif;  
+  color: white;  
+  height: 100%;  
+  background: linear-gradient(to bottom, #ffd89b 0%, #19547b 100%);  
+  background-repeat: no-repeat;  
+  background-attachment: fixed;  
 }

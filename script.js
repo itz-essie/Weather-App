@@ -32,9 +32,10 @@ $("#searchBtn").on("click", function (event) {
   }).then(function (response) {
     // Display response in the console log
     console.log(response);
-    var citiesTable = document.getElementById("citiesTable");
-    $(citiesTable).append("<tr>");
-    $("<td>").text(response.Name);
+
+    // var citiesTable = document.getElementById("citiesTable");
+    // $(citiesTable).append("<tr>");
+    // $("<td>").text(response.Name);
 
     var tempF = (response.main.temp - 273.15) * 1.8 + 32;
 
@@ -71,33 +72,42 @@ $("#searchBtn").on("click", function (event) {
       var uvIndexEl = $(".uvIndex");
       console.log(uvIndexEl);
 
-      $("#citiesList").append("<button>" + cityName + "</button>");
+      $(".btnGroup").append("<button>" + cityName + "</button>");
 
       var uvIndex = response.value;
-      console.log(uvIndex);
-  
-        uvIndexEl.removeClass(currentClass);
-        if (uvIndex <= 2) {
-          if (currentClass)uvIndexEl.removeClass(currentClass)
-          uvIndexEl.toggleClass("low");
-          currentClass = "low";
-        } else if ((uvIndex = 3 || uvIndex <= 5)) {
-          if (currentClass)uvIndexEl.removeClass(currentClass)
-          uvIndexEl.toggleClass("moderate");
-          currentClass = "moderate";
-        } else if ((uvIndex = 6 || uvIndex <= 7)) {
-          if (currentClass)uvIndexEl.removeClass(currentClass)
-          uvIndexEl.toggleClass("high");
-          currentClass = "high";
-        } else if ((uvIndex = 8 || uvIndex <= 10)) {
-          if (currentClass)uvIndexEl.removeClass(currentClass)
-          uvIndexEl.toggleClass("veryhigh");
-          currentClass = "veryhigh";
-        } else if (uvIndex > 11) {
-          if (currentClass)uvIndexEl.removeClass(currentClass)
-          uvIndexEl.toggleClass("extreme");
-          currentClass = "extreme";
-        }
+
+      uvIndexEl.removeClass(currentClass);
+      if (uvIndex <= 2) {
+        if (currentClass) uvIndexEl.removeClass(currentClass);
+        uvIndexEl.toggleClass("low");
+      } else if ((uvIndex = 3 || uvIndex <= 5)) {
+        if (currentClass) uvIndexEl.removeClass(currentClass);
+        uvIndexEl.toggleClass("moderate");
+      } else if ((uvIndex = 6 || uvIndex <= 7)) {
+        if (currentClass) uvIndexEl.removeClass(currentClass);
+        uvIndexEl.toggleClass("high");
+      } else if ((uvIndex = 8 || uvIndex <= 10)) {
+        if (currentClass) uvIndexEl.removeClass(currentClass);
+        uvIndexEl.toggleClass("veryhigh");
+      } else if (uvIndex > 11) {
+        if (currentClass) uvIndexEl.removeClass(currentClass);
+        uvIndexEl.toggleClass("extreme");
+      }
+      var queryURL3 =
+        "https://api.openweathermap.org/data/2.5/onecall?" +
+        "lat=" +
+        lat +
+        "&lon=" +
+        lon +
+        "&units=imperial&exclude=current,minutely,hourly,alerts" + 
+      "&appid=" + APIKey;
+
+      $.ajax({
+        url: queryURL3,
+        method: "GET",
+      }).then(function (response) {
+        console.log(response);
+      });
     });
   });
 });
