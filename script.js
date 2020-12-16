@@ -77,21 +77,21 @@ $("#searchBtn").on("click", function (event) {
       var uvIndex = response.value;
 
       uvIndexEl.removeClass(currentClass);
-      if (uvIndex <= 2) {
-        if (currentClass) uvIndexEl.removeClass(currentClass);
-        uvIndexEl.toggleClass("low");
-      } else if ((uvIndex = 3 || uvIndex <= 5)) {
-        if (currentClass) uvIndexEl.removeClass(currentClass);
-        uvIndexEl.toggleClass("moderate");
-      } else if ((uvIndex = 6 || uvIndex <= 7)) {
-        if (currentClass) uvIndexEl.removeClass(currentClass);
-        uvIndexEl.toggleClass("high");
-      } else if ((uvIndex = 8 || uvIndex <= 10)) {
-        if (currentClass) uvIndexEl.removeClass(currentClass);
-        uvIndexEl.toggleClass("veryhigh");
-      } else if (uvIndex > 11) {
-        if (currentClass) uvIndexEl.removeClass(currentClass);
-        uvIndexEl.toggleClass("extreme");
+      if (uvIndex > 3) {
+        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+        uvIndexEl.addClass("low"); // example city Denver
+      } else if ((uvIndex < 6)) {
+        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+        uvIndexEl.addClass("moderate"); // example city Miami
+      } else if ((uvIndex < 8)) {
+        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+        uvIndexEl.addClass("high");
+      } else if ((uvIndex < 11)) {
+        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+        uvIndexEl.addClass("veryhigh");
+      } else {
+        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+        uvIndexEl.addClass("extreme"); // example city Lagos
       }
       var queryURL3 =
         "https://api.openweathermap.org/data/2.5/onecall?" +
