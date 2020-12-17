@@ -1,6 +1,7 @@
-var currentClass;
-
 let currentTime = luxon.DateTime.local();
+// $("#weathertron").hide();
+document.getElementById("weathertron").style.display = "none";
+
 $(".currentDay").text(
   luxon.DateTime.local().toLocaleString({
     weekday: "long",
@@ -32,7 +33,7 @@ $("#searchBtn").on("click", function (event) {
   }).then(function (response) {
     // Display response in the console log
     console.log(response);
-
+    $("#weathertron").show();
     // var citiesTable = document.getElementById("citiesTable");
     // $(citiesTable).append("<tr>");
     // $("<td>").text(response.Name);
@@ -46,7 +47,7 @@ $("#searchBtn").on("click", function (event) {
     document.getElementById("weathertron").style.border =
       "thick solid rgb(17, 17, 63)";
     $("#wicon").attr("src", iconurl);
-    $(".city").html("<h2>" + response.name + "</h2>");
+    $(".city h2").text(response.name);
     $(".humidity").text("Humidity: " + response.main.humidity + "%");
     $(".temperature").text("Temperature: " + tempF.toFixed(2) + "°F");
     $(".windspeed").text("Wind Speed: " + response.wind.speed + "MPH");
@@ -76,21 +77,16 @@ $("#searchBtn").on("click", function (event) {
 
       var uvIndex = response.value;
 
-      uvIndexEl.removeClass(currentClass);
-      if (uvIndex > 3) {
-        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+      uvIndexEl.removeClass("low moderate high veryhigh extreme");
+      if (uvIndex < 3) {
         uvIndexEl.addClass("low"); // example city Denver
-      } else if ((uvIndex < 6)) {
-        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+      } else if (uvIndex >= 3 && uvIndex <= 5) {
         uvIndexEl.addClass("moderate"); // example city Miami
-      } else if ((uvIndex < 8)) {
-        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+      } else if (uvIndex > 5 && uvIndex <= 7) {
         uvIndexEl.addClass("high");
-      } else if ((uvIndex < 11)) {
-        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+      } else if (uvIndex > 7 && uvIndex <= 10) {
         uvIndexEl.addClass("veryhigh");
-      } else {
-        uvIndexEl.removeClass("low moderate high veryhigh extreme");
+      } else if (uvIndex > 10) {
         uvIndexEl.addClass("extreme"); // example city Lagos
       }
       var queryURL3 =
@@ -99,25 +95,31 @@ $("#searchBtn").on("click", function (event) {
         lat +
         "&lon=" +
         lon +
-        "&units=imperial&exclude=current,minutely,hourly,alerts" + 
-      "&appid=" + APIKey;
+        "&units=imperial&exclude=current,minutely,hourly,alerts" +
+        "&appid=" +
+        APIKey;
 
       $.ajax({
         url: queryURL3,
         method: "GET",
       }).then(function (response) {
         console.log(response);
+        for (i = 0; i < 5; i++) {
+          var HighTemp = "HighTemp:" + response.daily[i].temp.max;
+          var Humidity = "Humidity: " + response.daily[i].humidity + " %";
+          $(".showFiveDayForecast").append(`
+          <div class="col-md-2">
+          <div class="card" style="width: 9;">
+            <div class="card-body">
+              <p class="card-text">${HighTemp}</p>
+               <p class="card-text">${Humidity}</p>
+
+            </div>
+          </div>
+        </div>
+          `);
+        }
       });
     });
   });
 });
-
-// // append a row to the table, and then append a cell to the row.
-// var citiesTable = document.getElementById("citiesTable");
-// $(citiesTable).append("<tr>");
-// $("<td>").text(response.Name);
-
-//   $("").text("<br><hr>"+ location).val()
-// $("").prepend("<br> <hr>"+ location);
-
-// })

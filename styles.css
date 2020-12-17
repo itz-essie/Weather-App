@@ -109,3 +109,9 @@ height: 218px;
   height: 250px;
   padding-top: 10px;
 }
+.card{
+  color: #19547b;
+}
+.city h2{
+display: inline;
+}
