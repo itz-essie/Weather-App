@@ -16,7 +16,7 @@ let searchButton = $("#searchBtn");
 
 $("#searchBtn").on("click", function (event) {
   event.preventDefault();
-
+  $('.displayForecast').empty();
   var cityName = $("#searchInput").val();
   console.log($("#searchInput").val());
 
@@ -33,10 +33,8 @@ $("#searchBtn").on("click", function (event) {
   }).then(function (response) {
     // Display response in the console log
     console.log(response);
+    
     $("#weathertron").show();
-    // var citiesTable = document.getElementById("citiesTable");
-    // $(citiesTable).append("<tr>");
-    // $("<td>").text(response.Name);
 
     var tempF = (response.main.temp - 273.15) * 1.8 + 32;
 
@@ -105,19 +103,27 @@ $("#searchBtn").on("click", function (event) {
       }).then(function (response) {
         console.log(response);
         for (i = 0; i < 5; i++) {
-          var HighTemp = "HighTemp:" + response.daily[i].temp.max;
+          var forecastImg = response.daily[i].weather[0].icon;
+          var fiurl =
+            "https://openweathermap.org/img/wn/" + forecastImg + ".png";
+
+          var highTemp = "High of: " + response.daily[i].temp.max + " °F";
+          var lowTemp= "Low of: " + response.daily[i].temp.min + " °F";
           var Humidity = "Humidity: " + response.daily[i].humidity + " %";
-          $(".showFiveDayForecast").append(`
+          $(".displayForecast").append(`
           <div class="col-md-2">
-          <div class="card" style="width: 9;">
+          <div class="card" style="width: 20;">
             <div class="card-body">
-              <p class="card-text">${HighTemp}</p>
+              <p class="card-text">${highTemp}</p>
+              <p class="card-text">${lowTemp}</p>
                <p class="card-text">${Humidity}</p>
+               <img src="${fiurl}"/>
 
             </div>
           </div>
         </div>
           `);
+          
         }
       });
     });

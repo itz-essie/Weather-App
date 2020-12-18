@@ -115,3 +115,7 @@ height: 218px;
 .city h2{
 display: inline;
 }
+#fiveDayForecast{
+  font-size: 20px;
+  text-align: center;
+}
