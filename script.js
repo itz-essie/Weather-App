@@ -1,6 +1,5 @@
-let currentTime = luxon.DateTime.local();
-// $("#weathertron").hide();
-document.getElementById("weathertron").style.display = "none";
+$("#weathertron").hide();
+$("#fiveDayForecast").hide();
 
 $(".currentDay").text(
   luxon.DateTime.local().toLocaleString({
@@ -10,12 +9,15 @@ $(".currentDay").text(
   })
 );
 
+
+
 var APIKey = "5b6d33dc8f643284870e57c82d7b049d";
 
 let searchButton = $("#searchBtn");
 
 $("#searchBtn").on("click", function (event) {
   event.preventDefault();
+  // clears out 5 day forecast to display new entered city's 
   $('.displayForecast').empty();
   var cityName = $("#searchInput").val();
   console.log($("#searchInput").val());
@@ -35,7 +37,7 @@ $("#searchBtn").on("click", function (event) {
     console.log(response);
     
     $("#weathertron").show();
-
+    $("#fiveDayForecast").show();
     var tempF = (response.main.temp - 273.15) * 1.8 + 32;
 
     var weatherImg = response.weather[0].icon;
@@ -103,6 +105,12 @@ $("#searchBtn").on("click", function (event) {
       }).then(function (response) {
         console.log(response);
         for (i = 0; i < 5; i++) {
+          var nextDate = new Date(response.daily[i+1].dt * 1000).
+          toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit', 
+            year: 'numeric',
+          })
           var forecastImg = response.daily[i].weather[0].icon;
           var fiurl =
             "https://openweathermap.org/img/wn/" + forecastImg + ".png";
@@ -112,12 +120,14 @@ $("#searchBtn").on("click", function (event) {
           var Humidity = "Humidity: " + response.daily[i].humidity + " %";
           $(".displayForecast").append(`
           <div class="col-md-2">
-          <div class="card" style="width: 20;">
+          <div class="card">
             <div class="card-body">
+            <p class="card-text">${nextDate}</p>
               <p class="card-text">${highTemp}</p>
               <p class="card-text">${lowTemp}</p>
                <p class="card-text">${Humidity}</p>
                <img src="${fiurl}"/>
+
 
             </div>
           </div>
@@ -129,3 +139,37 @@ $("#searchBtn").on("click", function (event) {
     });
   });
 });
+
+$(".btnGroup").on("click", function(event){
+  alert("I work!");
+  console.log(event);
+});
+
+let nameOfLocation = $(this).children("#searchInput").val();
+console.log(this)
+localStorage.setItem("City Name", nameOfLocation);
+
+// var saveBtn = $(".saveBtn")
+// $(".btnGroup").on("click", function(){
+//   console.log("I cliked the button!")
+  
+//   let timeTable = $(this).siblings(".hour").text();
+//   let text= $(this).siblings("#textarea").val();
+
+//   localStorage.setItem(timeTable, text)
+// })
+
+// function storedItem (){
+//   $(".hour").each(function(){
+//     let currentHour = $(this).text()
+//     let storedItem = localStorage.getItem(currentHour)
+
+//     if (storedItem !== null) {
+//       $(this).siblings("textarea").val(storedItem)
+//     }
+//   })
+// }
+
+
+// $("#buttonList").on
+// storedItem()

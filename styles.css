@@ -99,6 +99,7 @@ body {
 
 .sidebar,.forecast .col-md-2, .card-body {
   height: 250px;
+  width: 1100px;
 }
 
 .space {
