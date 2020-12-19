@@ -13,8 +13,8 @@ var APIKey = "5b6d33dc8f643284870e57c82d7b049d";
 
 let searchButton = $("#searchBtn");
 
-function searchHistory(){
-  var lastSearchedCity = localStorage.getItem("City")
+function searchHistory() {
+  var lastSearchedCity = localStorage.getItem("City");
   if (lastSearchedCity !== null) {
     $("#searchInput").val(lastSearchedCity);
     uploadWeather();
@@ -22,10 +22,7 @@ function searchHistory(){
 }
 searchHistory();
 
-function uploadWeather(){
-  var cityName = $("#searchInput").val();
-  console.log($("#searchInput").val());
-
+function uploadWeather(cityName) {
   var queryURL =
     "https://api.openweathermap.org/data/2.5/weather?" +
     "q=" +
@@ -107,7 +104,7 @@ function uploadWeather(){
         url: queryURL3,
         method: "GET",
       }).then(function (response) {
-        console.log(response);
+        $(".displayForecast").empty();
         for (i = 0; i < 5; i++) {
           var nextDate = new Date(
             response.daily[i + 1].dt * 1000
@@ -142,16 +139,16 @@ function uploadWeather(){
   });
 }
 
-  $("#searchBtn").on("click", function (event) {
-    event.preventDefault();
-    // clears out 5 day forecast to display new entered city's
-    $(".displayForecast").empty();
-   uploadWeather();
-   localStorage.setItem("City", $("#searchInput").val())
-  })
+$("#searchBtn").on("click", function (event) {
+  event.preventDefault();
+  // clears out 5 day forecast to display new entered city's
+  $(".displayForecast").empty();
+  var cityNameVal = $("#searchInput").val();
+  uploadWeather(cityNameVal);
+  localStorage.setItem("City", $("#searchInput").val());
+});
 
 $(".btnGroup").on("click", function (event) {
-  $("#searchInput").val($(this).text());
- $(this).val("")
-  uploadWeather();
+  event.preventDefault();
+  uploadWeather(event.target.textContent);
 });
