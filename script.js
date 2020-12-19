@@ -1,6 +1,5 @@
 $("#weathertron").hide();
 $("#fiveDayForecast").hide();
-$(".displayForecast").empty();
 
 $(".currentDay").text(
   luxon.DateTime.local().toLocaleString({
@@ -146,39 +145,13 @@ function uploadWeather(){
   $("#searchBtn").on("click", function (event) {
     event.preventDefault();
     // clears out 5 day forecast to display new entered city's
+    $(".displayForecast").empty();
    uploadWeather();
    localStorage.setItem("City", $("#searchInput").val())
   })
 
 $(".btnGroup").on("click", function (event) {
-  alert("I work!");
-  console.log(event);
+  $("#searchInput").val($(this).text());
+ $(this).val("")
+  uploadWeather();
 });
-
-let nameOfLocation = $(this).child("#searchInput").val();
-console.log(this);
-localStorage.setItem("City Name", nameOfLocation);
-
-// var saveBtn = $(".saveBtn")
-// $(".btnGroup").on("click", function(){
-//   console.log("I cliked the button!")
-
-//   let timeTable = $(this).siblings(".hour").text();
-//   let text= $(this).siblings("#textarea").val();
-
-//   localStorage.setItem(timeTable, text)
-// })
-
-// function storedItem (){
-//   $(".hour").each(function(){
-//     let currentHour = $(this).text()
-//     let storedItem = localStorage.getItem(currentHour)
-
-//     if (storedItem !== null) {
-//       $(this).siblings("textarea").val(storedItem)
-//     }
-//   })
-// }
-
-// $("#buttonList").on
-// storedItem()
