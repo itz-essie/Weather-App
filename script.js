@@ -1,5 +1,6 @@
 $("#weathertron").hide();
 $("#fiveDayForecast").hide();
+$(".displayForecast").empty();
 
 $(".currentDay").text(
   luxon.DateTime.local().toLocaleString({
@@ -9,16 +10,20 @@ $(".currentDay").text(
   })
 );
 
-
-
 var APIKey = "5b6d33dc8f643284870e57c82d7b049d";
 
 let searchButton = $("#searchBtn");
 
-$("#searchBtn").on("click", function (event) {
-  event.preventDefault();
-  // clears out 5 day forecast to display new entered city's 
-  $('.displayForecast').empty();
+function searchHistory(){
+  var lastSearchedCity = localStorage.getItem("City")
+  if (lastSearchedCity !== null) {
+    $("#searchInput").val(lastSearchedCity);
+    uploadWeather();
+  }
+}
+searchHistory();
+
+function uploadWeather(){
   var cityName = $("#searchInput").val();
   console.log($("#searchInput").val());
 
@@ -35,7 +40,7 @@ $("#searchBtn").on("click", function (event) {
   }).then(function (response) {
     // Display response in the console log
     console.log(response);
-    
+
     $("#weathertron").show();
     $("#fiveDayForecast").show();
     var tempF = (response.main.temp - 273.15) * 1.8 + 32;
@@ -105,54 +110,59 @@ $("#searchBtn").on("click", function (event) {
       }).then(function (response) {
         console.log(response);
         for (i = 0; i < 5; i++) {
-          var nextDate = new Date(response.daily[i+1].dt * 1000).
-          toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit', 
-            year: 'numeric',
-          })
+          var nextDate = new Date(
+            response.daily[i + 1].dt * 1000
+          ).toLocaleDateString("en-US", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+          });
           var forecastImg = response.daily[i].weather[0].icon;
           var fiurl =
             "https://openweathermap.org/img/wn/" + forecastImg + ".png";
 
           var highTemp = "High of: " + response.daily[i].temp.max + " °F";
-          var lowTemp= "Low of: " + response.daily[i].temp.min + " °F";
+          var lowTemp = "Low of: " + response.daily[i].temp.min + " °F";
           var Humidity = "Humidity: " + response.daily[i].humidity + " %";
           $(".displayForecast").append(`
-          <div class="col-md-2">
-          <div class="card">
+          <div class="card" style="width: 10rem;">
+          <div class="card-body">
             <div class="card-body">
             <p class="card-text">${nextDate}</p>
               <p class="card-text">${highTemp}</p>
               <p class="card-text">${lowTemp}</p>
                <p class="card-text">${Humidity}</p>
                <img src="${fiurl}"/>
-
-
             </div>
           </div>
         </div>
           `);
-          
         }
       });
     });
   });
-});
+}
 
-$(".btnGroup").on("click", function(event){
+  $("#searchBtn").on("click", function (event) {
+    event.preventDefault();
+    // clears out 5 day forecast to display new entered city's
+   uploadWeather();
+   localStorage.setItem("City", $("#searchInput").val())
+  })
+
+$(".btnGroup").on("click", function (event) {
   alert("I work!");
   console.log(event);
 });
 
-let nameOfLocation = $(this).children("#searchInput").val();
-console.log(this)
+let nameOfLocation = $(this).child("#searchInput").val();
+console.log(this);
 localStorage.setItem("City Name", nameOfLocation);
 
 // var saveBtn = $(".saveBtn")
 // $(".btnGroup").on("click", function(){
 //   console.log("I cliked the button!")
-  
+
 //   let timeTable = $(this).siblings(".hour").text();
 //   let text= $(this).siblings("#textarea").val();
 
@@ -169,7 +179,6 @@ localStorage.setItem("City Name", nameOfLocation);
 //     }
 //   })
 // }
-
 
 // $("#buttonList").on
 // storedItem()

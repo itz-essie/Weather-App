@@ -2,17 +2,11 @@
   background-color: rgb(17, 17, 63);
   padding-bottom: 0px;
   padding-top: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
   color: white;
   text-align: center;
-  opacity: 0.7;
+  opacity: 0.8;
 }
-body {
-  padding-left: 20px;
-  padding-right: 20px;
-  /* background-image:radial-gradient(circle closest-side,yellow,#f06d06); */
-}
+
 
 h5 {
   color: rgb(17, 17, 63);
@@ -25,7 +19,6 @@ h5 {
   margin-right: 0px;
   color: rgb(17, 17, 63);
   text-align: center;
-  /* opacity: 0.0;  Opacity so that when page loads, the jumbroton does not appeaer until user searches city */
 }
 
 .low {
@@ -70,10 +63,10 @@ h5 {
 .btnGroup button {
   background-color:rgb(17, 17, 63);
   border: 1px solid white;
-  color: white; /* White text */
-  padding: 10px 24px; /*Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  width: 69%; /* Set a width if needed */
+  color: white;
+  padding: 10px 24px; 
+  cursor: pointer; 
+  width: 69%; 
   display: block; /* Make the buttons appear below each other */
 }
 
@@ -87,19 +80,22 @@ h5 {
 }
 
 body {  
-  margin: 16px;  
+  margin: 10px;  
   font-size: 100%;  
   font-family: 'Open Sans', sans-serif;  
   color: white;  
   height: 100%;  
   background: linear-gradient(to bottom, #ffd89b 0%, #19547b 100%);  
   background-repeat: no-repeat;  
-  background-attachment: fixed;  
+  background-attachment: fixed; 
+ 
 }
 
-.sidebar,.forecast .col-md-2, .card-body {
+.card-body {
   height: 250px;
-  width: 1100px;
+  width: 300px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .space {
@@ -119,4 +115,5 @@ display: inline;
 #fiveDayForecast{
   font-size: 20px;
   text-align: center;
+  line-height: 20px;
 }
